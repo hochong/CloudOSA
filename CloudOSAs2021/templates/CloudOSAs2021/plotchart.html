@@ -1,0 +1,51 @@
+{% block content %}
+{% if content %}
+        <div>
+            <canvas id="myChart" style="width:100%"></canvas>
+        </div>
+        <script>
+            //make ISO time format
+            function ISO_time(){
+                let content_timestamp = '20{{ content.timestamp }}';
+                return new Date(content_timestamp).toISOString();
+            }
+            //Chart
+            new Chart("myChart", {
+                type: "line",
+                data: {
+                    labels: {{ content.xdata }},
+                    datasets: [{
+                        fill: false,
+                        lineTension: 0,
+                        backgroundColor: "rgba(0,0,255,1.0)",
+                        borderColor: "rgba(0,0,255,0.1)",
+                        data: {{ content.ydata }}
+                    }]
+                },
+                options: {
+                    legend: {display: false},
+                    scales: {
+                        yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: '{{ content.ylabel }}'
+                            }
+                        }],
+                        xAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: '{{ content.xlabel }}'
+                            }
+                        }]
+                    },
+                    title: {
+                        display: true,
+                        text: '{{ content.instrument_model }}'+ ' measurement at ' +ISO_time()
+                    }
+                }
+            });
+        </script>
+    {% else %}
+        <p>No data can be displayed</p>
+    {% endif %}
+{% endblock content %}

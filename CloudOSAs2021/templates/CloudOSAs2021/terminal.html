@@ -1,0 +1,11 @@
+{%  extends "CloudOSAs2021/base.html" %}
+
+{% block content %}
+    <div>
+        <h1>This is the terminal page</h1>
+    </div>
+    <div>
+        <label for="command_input">>></label><input id="command_input"><button onclick="submit_query()">Query</button>
+    </div>
+    <div id="query_result_div"></div>
+{% endblock content %}
