@@ -11,7 +11,7 @@ http://flaskosa.herokuapp.com/
 ```python -m pip install requests```
 
 ## Run
-```python managge.py runserver```
+```python manage.py runserver```
 
 
 ## Reference
